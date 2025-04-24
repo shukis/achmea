@@ -2,4 +2,9 @@
 <resources>
 
     <style name="Theme.Achmea" parent="android:Theme.Material.Light.NoActionBar" />
+
+    <style name="Theme.Achmea.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenAnimatedIcon">@drawable/animated_logo</item>
+        <item name="postSplashScreenTheme">@style/Theme.Achmea</item>
+    </style>
 </resources>

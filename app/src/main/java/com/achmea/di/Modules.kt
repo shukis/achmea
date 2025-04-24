@@ -9,6 +9,7 @@ import com.achmea.domain.usecase.GetEmployerByIdUseCase
 import com.achmea.domain.usecase.SearchEmployersUseCase
 import com.achmea.presentation.list.EmployersListViewModel
 import com.achmea.presentation.details.EmployerDetailsViewModel
+import com.achmea.app.SplashViewModel
 import io.ktor.client.engine.HttpClientEngine
 import io.ktor.client.engine.okhttp.OkHttp
 import org.koin.core.module.dsl.factoryOf
@@ -28,6 +29,7 @@ val appModule = module {
 val viewModelModule = module {
     viewModelOf(::EmployersListViewModel)
     viewModelOf(::EmployerDetailsViewModel)
+    viewModelOf(::SplashViewModel)
 }
 
 val useCaseModule = module {

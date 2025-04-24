@@ -55,6 +55,7 @@ dependencies {
     implementation(libs.koin.compose)
     implementation(libs.bundles.coroutines)
     implementation(libs.icons.extended)
+    implementation(libs.core.splashscreen)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

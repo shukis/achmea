@@ -5,14 +5,12 @@ import androidx.lifecycle.viewModelScope
 import com.achmea.domain.model.Employer
 import com.achmea.domain.usecase.SearchEmployersUseCase
 import kotlinx.coroutines.FlowPreview
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.launch
 
 private const val DEBOUNCE_DELAY = 500L
-private const val NETWORK_DELAY = 200L
 
 @OptIn(FlowPreview::class)
 class EmployersListViewModel(
@@ -44,7 +42,6 @@ class EmployersListViewModel(
 
     private suspend fun getEmployers(searchQuery: String) {
         _showLoader.emit(searchQuery.isNotBlank())
-        delay(NETWORK_DELAY) //emulate network delay
         searchEmployersUseCase(searchQuery).fold(
             onSuccess = {
                 _showSearchPrompt.emit(it.isEmpty() && searchQuery.isBlank())

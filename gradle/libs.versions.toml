@@ -13,6 +13,7 @@ coroutines = "1.10.1"
 ktor = "3.0.0"
 koin = "4.0.0"
 icons-extended = "1.7.8"
+splash = "1.0.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -38,6 +39,7 @@ ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx
 ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" }
 koin-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koin" }
 icons-extended = { module = "androidx.compose.material:material-icons-extended", version.ref = "icons-extended" }
+core-splashscreen = { group = "androidx.core", name = "core-splashscreen", version.ref = "splash" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
