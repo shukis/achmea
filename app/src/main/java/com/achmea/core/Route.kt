@@ -6,5 +6,5 @@ sealed interface Route {
     @Serializable
     data object EmployersList : Route
     @Serializable
-    data class EmployerDetails(val id: String) : Route
+    data class EmployerDetails(val id: Long) : Route
 }

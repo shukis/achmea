@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Achmea</string>
+    <string name="clear_search">Clear search</string>
+    <string name="employer_search">Search employer</string>
 </resources>
