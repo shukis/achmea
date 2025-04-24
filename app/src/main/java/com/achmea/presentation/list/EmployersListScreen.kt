@@ -29,15 +29,18 @@ import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.achmea.R
 import com.achmea.core.Route
 import com.achmea.designsystem.components.SearchTextField
@@ -66,19 +69,11 @@ fun EmployersListScreen(
                 .asPaddingValues()
         )
     ) {
-        CenterAlignedTopAppBar(
-            title = {
-                SearchTextField(
-                    value = query,
-                    onValueChange = {
-                        viewModel.onSearch(it)
-                    },
-                    placeholder = stringResource(R.string.clear_search),
-                    modifier = Modifier.fillMaxWidth(),
-                    showLoader = showLoader
-                )
-            },
-            scrollBehavior = behavior
+        Toolbar(
+            query = query,
+            onValueChange = { viewModel.onSearch(it) },
+            behavior = behavior,
+            showLoader
         )
         EmployerListContent(
             employers = employers,
@@ -93,8 +88,30 @@ fun EmployersListScreen(
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun EmployerListContent(
+private fun Toolbar(
+    query: String,
+    onValueChange: (String) -> Unit,
+    behavior: TopAppBarScrollBehavior,
+    showLoader: Boolean
+) {
+    CenterAlignedTopAppBar(
+        title = {
+            SearchTextField(
+                value = query,
+                onValueChange = onValueChange,
+                placeholder = stringResource(R.string.clear_search),
+                modifier = Modifier.fillMaxWidth(),
+                showLoader = showLoader
+            )
+        },
+        scrollBehavior = behavior
+    )
+}
+
+@Composable
+private fun EmployerListContent(
     employers: List<Employer>,
     navController: NavController,
     paddingValues: PaddingValues,
@@ -124,9 +141,9 @@ fun EmployerListContent(
 }
 
 @Composable
-private fun InitialSearchPrompt(modifier: Modifier = Modifier) {
+private fun InitialSearchPrompt() {
     Column(
-        modifier = modifier
+        modifier = Modifier
             .fillMaxSize()
             .padding(horizontal = 32.dp, vertical = 108.dp),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -153,9 +170,9 @@ private fun InitialSearchPrompt(modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun NoResults(modifier: Modifier = Modifier) {
+private fun NoResults() {
     Column(
-        modifier = modifier
+        modifier = Modifier
             .fillMaxSize()
             .padding(horizontal = 32.dp, vertical = 108.dp),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -181,3 +198,40 @@ fun NoResults(modifier: Modifier = Modifier) {
         )
     }
 }
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Preview(showBackground = true)
+@Composable
+private fun PreviewEmployerListContent() {
+    val employers = listOf(
+        Employer(id = 1, name = "John Doe", place = null, discountPercentage = null),
+        Employer(id = 2, name = "Jane Smith", place = null, discountPercentage = null),
+        Employer(id = 3, name = "Alice Johnson", place = null, discountPercentage = null)
+    )
+    val navController = rememberNavController()
+    val lazyListState = rememberLazyListState()
+    val paddingValues = PaddingValues()
+
+    Column {
+        Toolbar(
+            query = "",
+            onValueChange = {},
+            behavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState()),
+            showLoader = false
+        )
+        EmployerListContent(
+            employers = employers,
+            navController = navController,
+            paddingValues = paddingValues,
+            lazyListState = lazyListState
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun PreviewInitialSearchPrompt() = InitialSearchPrompt()
+
+@Preview(showBackground = true)
+@Composable
+private fun PreviewNoResults() = NoResults()
