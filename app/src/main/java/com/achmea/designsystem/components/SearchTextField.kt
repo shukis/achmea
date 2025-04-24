@@ -2,10 +2,12 @@ package com.achmea.designsystem.components
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -23,7 +25,8 @@ fun SearchTextField(
     value: String,
     onValueChange: (String) -> Unit,
     modifier: Modifier = Modifier,
-    placeholder: String
+    placeholder: String,
+    showLoader: Boolean = false
 ) {
     OutlinedTextField(
         value = value,
@@ -39,7 +42,9 @@ fun SearchTextField(
             Icon(Icons.Default.Search, contentDescription = null)
         },
         trailingIcon = {
-            if (value.isNotEmpty()) {
+            if (showLoader) {
+                CircularProgressIndicator(modifier = Modifier.size(24.dp))
+            } else if (value.isNotEmpty()) {
                 IconButton(onClick = { onValueChange("") }) {
                     Icon(
                         Icons.Default.Close,

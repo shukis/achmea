@@ -54,6 +54,7 @@ dependencies {
     implementation(libs.bundles.ktor)
     implementation(libs.koin.compose)
     implementation(libs.bundles.coroutines)
+    implementation(libs.icons.extended)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

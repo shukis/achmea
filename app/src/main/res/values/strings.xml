@@ -7,4 +7,8 @@
     <string name="employer_discount">Discount</string>
     <string name="employer_discount_percentage">%1$d%%</string>
     <string name="employer_place">Place</string>
+    <string name="employers_initial_search_title">Find employer</string>
+    <string name="employers_initial_search_description">Start typing to search…</string>
+    <string name="employers_no_results_title">No results found</string>
+    <string name="employers_no_results_description">Try adjusting your search…</string>
 </resources>
