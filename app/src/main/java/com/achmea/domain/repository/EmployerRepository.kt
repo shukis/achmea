@@ -4,4 +4,5 @@ import com.achmea.domain.model.Employer
 
 interface EmployersRepository {
     suspend fun searchEmployers(query: String): Result<List<Employer>>
+    suspend fun getEmployers(): Result<List<Employer>>
 }
