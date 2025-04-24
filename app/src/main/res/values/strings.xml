@@ -2,4 +2,9 @@
     <string name="app_name">Achmea</string>
     <string name="clear_search">Clear search</string>
     <string name="employer_search">Search employer</string>
+    <string name="back">Back</string>
+    <string name="employer_details">Details</string>
+    <string name="employer_discount">Discount</string>
+    <string name="employer_discount_percentage">%1$d%%</string>
+    <string name="employer_place">Place</string>
 </resources>

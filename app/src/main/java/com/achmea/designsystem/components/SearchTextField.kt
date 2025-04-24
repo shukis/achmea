@@ -2,7 +2,6 @@ package com.achmea.designsystem.components
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
@@ -31,8 +30,7 @@ fun SearchTextField(
         onValueChange = onValueChange,
         modifier = modifier
             .fillMaxWidth()
-            .height(56.dp)
-            .padding(horizontal = 16.dp),
+            .height(56.dp),
         placeholder = { Text(placeholder) },
         textStyle = MaterialTheme.typography.bodyLarge,
         singleLine = true,
