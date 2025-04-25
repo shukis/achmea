@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.launch
 
-private const val DEBOUNCE_DELAY = 500L
+const val DEBOUNCE_DELAY = 500L
 
 @OptIn(FlowPreview::class)
 class EmployersListViewModel(

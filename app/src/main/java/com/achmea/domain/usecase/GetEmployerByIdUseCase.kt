@@ -5,8 +5,14 @@ import com.achmea.domain.repository.EmployersRepository
 
 class GetEmployerByIdUseCase(private val repository: EmployersRepository) {
     suspend operator fun invoke(id: Long): Result<Employer> {
-        return repository.getEmployers().map { employers ->
-            employers.first { employer -> employer.id == id }
+        val result = repository.getEmployers()
+
+        return if (result.isSuccess) {
+            result.getOrNull()?.find { it.id == id }?.let {
+                Result.success(it)
+            } ?: Result.failure(Exception("Employer with ID $id not found."))
+        } else {
+            Result.failure(result.exceptionOrNull() ?: Exception("Unknown error"))
         }
     }
 }

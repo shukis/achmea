@@ -14,6 +14,7 @@ ktor = "3.0.0"
 koin = "4.0.0"
 icons-extended = "1.7.8"
 splash = "1.0.1"
+mockk = "1.13.7"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -33,6 +34,7 @@ androidx-material3 = { group = "androidx.compose.material3", name = "material3" 
 navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigation" }
 coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
 coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
+coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
 ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
 ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
 ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
@@ -40,6 +42,7 @@ ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "kto
 koin-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koin" }
 icons-extended = { module = "androidx.compose.material:material-icons-extended", version.ref = "icons-extended" }
 core-splashscreen = { group = "androidx.core", name = "core-splashscreen", version.ref = "splash" }
+mockk = { group = "io.mockk", name = "mockk", version.ref = "mockk" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
@@ -57,5 +60,11 @@ ktor = [
 coroutines = [
     "coroutines-core",
     "coroutines-android"
+]
+
+test = [
+    "mockk",
+    "coroutines-test",
+    "junit"
 ]
 
