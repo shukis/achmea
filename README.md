@@ -28,4 +28,4 @@ Achmea test assignment.
 - **Coroutines** – For handling asynchronous tasks.
 - **Clean Architecture** – Ensuring maintainable, scalable code.
 - **Koin** - For dependency injection.
-- **Ktor** - For networkingand API communication.
+- **Ktor** - For networking and API communication.
